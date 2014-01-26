@@ -1,8 +1,10 @@
-define ['backbone', 'views/blog'], (Backbone, BlogView) ->
+define ['backbone', 'views/blog', 'collections/posts', 'views/posts'], (Backbone, BlogView, Posts, PostsView) ->
   return Backbone.Router.extend
     routes:
       '*path': 'default'
 
     default: (path) ->
-      blogView = new BlogView()
-      $('.root').html(blogView.render().$el)
+      posts = new Posts()
+      postsView = new PostsView({ collection: posts })
+      postsView.render()
+      posts.fetch()
