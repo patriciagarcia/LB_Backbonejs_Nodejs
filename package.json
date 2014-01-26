@@ -9,6 +9,7 @@
     "text":             "requirejs/text",
     "underscore":       "1.5.2",
     "backbone":         "1.1.0",
-    "dustjs-linkedin":  "2.3.1"
+    "dustjs-linkedin":  "2.3.1",
+    "request":          "2.33.0"
   }
 }
