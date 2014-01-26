@@ -1,0 +1,20 @@
+{
+  "name": "backbone-node-liveblog",
+  "version": "0.0.1",
+  "authors": [
+    "Patricia Garcia <pat@patriciagarcia.me>"
+  ],
+  "description": "A Backbone implementation of Liveblog Embed",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+    ],
+  "dependencies": {
+    "jquery":           "1.11.0"
+  }
+}
