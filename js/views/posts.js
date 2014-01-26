@@ -2,7 +2,6 @@
 (function() {
   define(['backbone', 'dust', 'text!templates/post.tmpl'], function(Backbone, Dust, PostTmpl) {
     return Backbone.View.extend({
-      el: '.root',
       initialize: function() {
         dust.loadSource(dust.compile(PostTmpl, 'postTmpl'));
         this.listenTo(this.collection, 'reset', this.render);

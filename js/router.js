@@ -9,7 +9,8 @@
         var posts, postsView;
         posts = new Posts();
         postsView = new PostsView({
-          collection: posts
+          collection: posts,
+          el: ('.root')
         });
         postsView.render();
         return posts.fetch();

@@ -1,6 +1,6 @@
 define ['backbone', 'dust', 'text!templates/post.tmpl'], (Backbone, Dust, PostTmpl) ->
   return Backbone.View.extend
-    el: '.root'
+    #el: '.root'
 
     initialize: ->
       dust.loadSource(dust.compile(PostTmpl, 'postTmpl'))
