@@ -2,7 +2,6 @@ requirejs     = require('requirejs')
 express       = require('express')
 dust          = require('dustjs-linkedin')
 request       = require('request')
-LIVEBLOG_URL  = 'http://master.sd-test.sourcefabric.org/resources/LiveDesk/Blog/1/Post/Published/?X-Filter=*&limit=1000'
 
 app = express()
 
@@ -25,26 +24,28 @@ requirejs.config
   # are loaded relative to the top-level JS file.
   nodeRequire: require
 
-requirejs ['models/blog', 'collections/posts', 'text!templates/blog.tmpl', 'text!templates/post.tmpl'], (Blog, Posts, BlogTmpl, PostTmpl) ->
+requirejs ['models/blog', 'collections/posts', 'text!templates/blog.tmpl', 'appConfig'], (Blog, Posts, BlogTmpl, AppConfig) ->
 
   objects =
     blog: new Blog()
 
-  app.get('/', (req, res) ->
-    request LIVEBLOG_URL, (error, response, data) ->
+  app.get '/', (req, res) ->
+    request AppConfig.LIVEBLOG_URL, (error, response, data) ->
       if (!error && response.statusCode == 200)
+        # Parse the JSON to a Posts collection
         objects.posts = new Posts(JSON.parse(data), {parse: true})
-    
-        dust.loadSource(dust.compile(PostTmpl, 'post'))
-        dust.render('post', objects.posts.first().toJSON(), (err,out) ->
+
+        context =
+          'notice': 'This was rendered from the backend'
+          'length': objects.posts.length
+          'posts' : objects.posts.toJSON()
+          'post'  : (chunk, context, bodies) ->
+            return chunk.map (chunk) ->
+              chunk.render(bodies.block, context).end()
+
+        dust.loadSource(dust.compile(BlogTmpl, 'blog'))
+        dust.render 'blog', context, (err,out) ->
           res.send(out)
-        )
-    #compiledTmpl = dust.compile(BlogTmpl, 'blog')
-    #dust.loadSource(compiledTmpl)
-    #dust.render('blog', models.blog.toJSON(), (err,out) ->
-      #res.send(out)
-    #)
-  )
 
   port = 3000
   app.listen port, ->

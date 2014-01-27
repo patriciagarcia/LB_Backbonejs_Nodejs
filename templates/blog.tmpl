@@ -1,2 +1,12 @@
-<div class="root">Blog's name: {name}</div>
-<script data-main="js/config" src="node_modules/requirejs/require.js"></script>
+<div class="liveblog">
+  {notice}
+  <p>There are {length} posts</p>
+  {#posts}
+    <ul>
+      {#post}
+        <li>Author: {AuthorName}, Content: {Content}</li>
+      {/post}
+    </ul>
+  {/posts}
+</div>
+<script data-main="js/main" src="node_modules/requirejs/require.js"></script>

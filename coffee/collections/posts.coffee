@@ -1,7 +1,7 @@
-define ['backbone', 'models/post'], (Backbone, Post) ->
+define ['backbone', 'models/post', 'appConfig'], (Backbone, Post, AppConfig) ->
   return Backbone.Collection.extend
-    model: Post,
-    url: 'http://master.sd-test.sourcefabric.org/resources/LiveDesk/Blog/1/Post/Published/?X-Filter=*&limit=1000',
+    model: Post
+    url: AppConfig.LIVEBLOG_URL
 
     parse: (data) ->
       return data.PostList
