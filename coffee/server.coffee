@@ -24,10 +24,13 @@ requirejs.config
   # are loaded relative to the top-level JS file.
   nodeRequire: require
 
-requirejs ['models/blog', 'collections/posts', 'text!templates/blog.tmpl', 'appConfig'], (Blog, Posts, BlogTmpl, AppConfig) ->
+requirejs ['models/blog', 'collections/posts', 'text!templates/blog.tmpl', 'text!templates/base.tmpl', 'appConfig'], (Blog, Posts, BlogTmpl, BaseTmpl, AppConfig) ->
 
   objects =
     blog: new Blog()
+
+  # Register base template
+  dust.loadSource(dust.compile(BaseTmpl, 'base'))
 
   app.get '/', (req, res) ->
     request AppConfig.LIVEBLOG_URL, (error, response, data) ->

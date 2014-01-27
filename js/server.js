@@ -30,11 +30,12 @@
     nodeRequire: require
   });
 
-  requirejs(['models/blog', 'collections/posts', 'text!templates/blog.tmpl', 'appConfig'], function(Blog, Posts, BlogTmpl, AppConfig) {
+  requirejs(['models/blog', 'collections/posts', 'text!templates/blog.tmpl', 'text!templates/base.tmpl', 'appConfig'], function(Blog, Posts, BlogTmpl, BaseTmpl, AppConfig) {
     var objects, port;
     objects = {
       blog: new Blog()
     };
+    dust.loadSource(dust.compile(BaseTmpl, 'base'));
     app.get('/', function(req, res) {
       return request(AppConfig.LIVEBLOG_URL, function(error, response, data) {
         var context;
