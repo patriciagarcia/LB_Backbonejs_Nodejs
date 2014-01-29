@@ -13,8 +13,9 @@
     "bower_components",
     "test",
     "tests"
-    ],
+  ],
   "dependencies": {
-    "jquery":           "1.11.0"
+    "jquery": "1.11.0",
+    "almond": "~0.2.9"
   }
 }

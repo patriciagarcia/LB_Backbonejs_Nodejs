@@ -5,10 +5,11 @@ module.exports = function(grunt){
     requirejs: {
       compile: {
         options: {
-          baseUrl: 'js/',
           mainConfigFile: 'js/main.js',
-          name: 'main',
-          out: 'build/app.min.js'
+          baseUrl: 'js/',
+          name: '../bower_components/almond/almond',
+          include: ['main'],
+          out: 'build/app.min.js',
         }
       }
     }

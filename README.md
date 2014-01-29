@@ -1,4 +1,7 @@
 LB_Backbonejs_Nodejs
 ====================
 
-Run with node js/server.js
+Build with: grunt
+
+Run with:
+node js/server.js
