@@ -1,15 +1,20 @@
 {
-  "name":           "backbone-node-liveblog",
-  "description":    "A Backbone implementation of Liveblog Embed",
-  "version":        "0.0.1",
-  "private":        true,
+  "name": "backbone-node-liveblog",
+  "description": "A Backbone implementation of Liveblog Embed",
+  "version": "0.0.1",
+  "private": true,
   "dependencies": {
-    "express":          "3.4.8",
-    "requirejs":        "2.1.10",
-    "text":             "requirejs/text",
-    "underscore":       "1.5.2",
-    "backbone":         "1.1.0",
-    "dustjs-linkedin":  "2.3.1",
-    "request":          "2.33.0"
+    "express": "3.4.8",
+    "requirejs": "2.1.10",
+    "text": "requirejs/text",
+    "underscore": "1.5.2",
+    "backbone": "1.1.0",
+    "dustjs-linkedin": "2.3.1",
+    "request": "2.33.0"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "grunt-contrib-jshint": "~0.8.0",
+    "grunt-contrib-requirejs": "~0.4.1"
   }
 }
